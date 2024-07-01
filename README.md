@@ -31,8 +31,9 @@ npm install twilio@^3.84.1
 ```
 
 
-**Kurulum Adımları**
-Projeyi Klonlayın ve Bağımlılıkları Yükleyin
+## Kurulum Adımları
+
+- **Projeyi Klonlayın ve Bağımlılıkları Yükleyin
 git clone https://github.com/kullaniciadi/phoneverfy.git
 cd phoneverfy
 npm install

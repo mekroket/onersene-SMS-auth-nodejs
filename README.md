@@ -37,7 +37,7 @@ git clone https://github.com/kullaniciadi/phoneverfy.git
 cd phoneverfy
 npm install
 
-**Çevre Değişkenlerini Ayarlayın**
+##Çevre Değişkenlerini Ayarlayın
 Projeyi çalıştırmak için gerekli çevre değişkenlerini ayarlayın. Örnek .env dosyasını projenizin kök dizinine ekleyin ve aşağıdaki değişkenleri tanımlayın:
 PORT=3000
 MONGODB_URI=mongodb://localhost:27017/phoneverfy

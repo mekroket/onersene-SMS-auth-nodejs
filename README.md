@@ -7,7 +7,7 @@ Bu proje, kullanıcıların telefon numaraları üzerinden üye olmalarını ve 
 - **Node.js** ve **Express.js** ile backend geliştirilmiştir.
 - **MongoDB** veritabanı kullanılmıştır.
 
-##Proje Resimleri
+## Proje Resimleri
 
 ![1](https://github.com/mekroket/onersene-SMS-auth-restapi/blob/main/1.png)
 ![2](https://github.com/mekroket/onersene-SMS-auth-restapi/blob/main/2.png)

@@ -14,7 +14,7 @@ Bu proje, kullanıcıların telefon numaraları üzerinden üye olmalarını ve 
 ![3](https://github.com/mekroket/onersene-SMS-auth-restapi/blob/main/3.png)
 ![4](https://github.com/mekroket/onersene-SMS-auth-restapi/blob/main/4.png)
 ![5](https://github.com/mekroket/onersene-SMS-auth-restapi/blob/main/5.png)
-
+![6](https://github.com/mekroket/onersene-SMS-auth-restapi/blob/main/6.png)
 
 
 ### Bağımlılıklar

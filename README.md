@@ -9,7 +9,7 @@ Bu proje, kullanıcıların telefon numaraları üzerinden üye olmalarını ve 
 
 ### Bağımlılıklar
 
-```bash
+
 npm install @hapi/joi@^17.1.1
 npm install bcrypt@^5.1.0
 npm install bcryptjs@^2.4.3

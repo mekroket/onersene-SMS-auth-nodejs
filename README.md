@@ -38,7 +38,7 @@ git clone https://github.com/kullaniciadi/phoneverfy.git
 cd phoneverfy
 npm install
 
-##Çevre Değişkenlerini Ayarlayın
+- **Çevre Değişkenlerini Ayarlayın
 Projeyi çalıştırmak için gerekli çevre değişkenlerini ayarlayın. Örnek .env dosyasını projenizin kök dizinine ekleyin ve aşağıdaki değişkenleri tanımlayın:
 PORT=3000
 MONGODB_URI=mongodb://localhost:27017/phoneverfy
@@ -48,11 +48,11 @@ TWILIO_AUTH_TOKEN=your_twilio_auth_token
 TWILIO_ACCOUNT_SID ve TWILIO_AUTH_TOKEN değerlerini Twilio hesabınızdan alabilirsiniz.
 
 
-**Veritabanını Başlatın**
+- **Veritabanını Başlatın
 MongoDB veritabanını başlatın:
 mongod --dbpath /path/to/mongodb/data
 
-**Uygulamayı Başlatın**
+- **Uygulamayı Başlatın**
 Uygulamayı başlatmak için aşağıdaki komutu çalıştırın:
 npm start
 node app.js

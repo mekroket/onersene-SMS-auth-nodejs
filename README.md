@@ -34,28 +34,35 @@ npm install twilio@^3.84.1
 ## Kurulum Adımları
 
 - **Projeyi Klonlayın ve Bağımlılıkları Yükleyin
+```bash
 git clone https://github.com/kullaniciadi/phoneverfy.git
 cd phoneverfy
 npm install
+```
 
 - **Çevre Değişkenlerini Ayarlayın
 Projeyi çalıştırmak için gerekli çevre değişkenlerini ayarlayın. Örnek .env dosyasını projenizin kök dizinine ekleyin ve aşağıdaki değişkenleri tanımlayın:
+```bash
 PORT=3000
 MONGODB_URI=mongodb://localhost:27017/phoneverfy
 TWILIO_ACCOUNT_SID=your_twilio_account_sid
 TWILIO_AUTH_TOKEN=your_twilio_auth_token
-
+```
 TWILIO_ACCOUNT_SID ve TWILIO_AUTH_TOKEN değerlerini Twilio hesabınızdan alabilirsiniz.
 
 
 - **Veritabanını Başlatın
 MongoDB veritabanını başlatın:
+```bash
 mongod --dbpath /path/to/mongodb/data
+```
 
 - **Uygulamayı Başlatın**
 Uygulamayı başlatmak için aşağıdaki komutu çalıştırın:
+```bash
 npm start
 node app.js
+```
 Uygulama varsayılan olarak http://localhost:3000 adresinde çalışacaktır.
 
 

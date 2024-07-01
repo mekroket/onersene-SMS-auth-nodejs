@@ -1,0 +1,19 @@
+
+<img src="/public/img/2.jpg" alt="">
+
+<div class="text-center" style="margin-top: -25%; margin-bottom: 2%;">
+    <h1 style="color: rgb(0, 165, 22);">Kategoriler</h1><br>
+    <% kategoriler.forEach(function(kategori) { %>
+      <div class="card" style="width: 18rem; margin: auto;">
+        <a href="/onersene/kategori/<%= kategori._id %>/esnaflar">
+          <img class="card-img-top" style="margin: auto;" src="/uploads/<%= kategori.resim %>" alt="<%= kategori.kategori %>">
+        </a>
+        <div class="card-body">
+          <a href="/onersene/kategori/<%= kategori._id %>/esnaflar" style="text-decoration: none; color: inherit;">
+            <h5 class="card-title" style="text-align: center;"><%= kategori.kategori %></h5>
+          </a>
+        </div>
+      </div>
+    <% }); %>
+  </div>
+  

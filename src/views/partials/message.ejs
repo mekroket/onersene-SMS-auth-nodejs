@@ -1,0 +1,83 @@
+<% if(typeof errors != 'undefined'){ %>
+    <% errors.forEach(function(error) { %>
+        <div class="ui warning message">
+            <i class="close icon"></i>
+            <div class="header">
+                Kullanıcı kaydınız başarısız oldu.
+            </div>
+            <%= error.msg %>
+        </div>
+    <% }); %>
+<% } %>
+
+<% if(success_msg != ''){ %>
+    <div class="ui success message">
+        <i class="close icon"></i>
+        <div class="header">
+            Kullanıcı kaydınız başarılı oldu.
+        </div>
+        <%= success_msg %>
+    </div>
+<% } %>
+
+<% if(error_msg != ''){ %>
+    <div class="ui warning message">
+        <i class="close icon"></i>
+        <div class="header"></div>
+        <%= error_msg %>
+    </div>
+<% } %>
+
+<% if(error != ''){ %>
+    <div class="ui warning message">
+        <i class="close icon"></i>
+        <div class="header"></div>
+        <%= error %>
+    </div>
+<% } %>
+
+<% if(success != ''){ %>
+    <div class="alert alert-primary" role="alert">
+        <i class="alert alert-primary" role="alert"></i>
+        <div class="header"></div>
+        <%= success  %>
+    </div>
+<% } %>
+
+<% if(typeof success_msg_flash != 'undefined'){ %>
+    <div class="ui success message">
+        <i class="close icon"></i>
+        <div class="header"></div>
+        <%= success_msg_flash %>
+    </div>
+<% } %>
+<% if(success_update != ''){ %>
+    <div class="alert alert-success" role="alert">
+        <i class="fas fa-check-circle"></i>
+        <span style="color: white;"><%= success_update  %></span>
+    </div>
+<% } %>
+<% if(success_add != ''){ %>
+    <div class="alert alert-success" role="alert">
+        <i class="fas fa-check-circle"></i>
+        <span style="color: white;"><%= success_add  %></span>
+    </div>
+<% } %>
+<% if(success_delete != ''){ %>
+    <div class="alert alert-success" role="alert">
+        <i class="fas fa-check-circle"></i>
+        <span style="color: white;"><%= success_delete  %></span>
+    </div>
+<% } %>
+<% if(success_profil != ''){ %>
+    <div class="alert alert-success" role="alert">
+        <i class="fas fa-check-circle"></i>
+        <span style="color: white;"><%= success_profil  %></span>
+    </div>
+<% } %>
+<% if(success_hizmet != ''){ %>
+    <div class="alert alert-success" role="alert">
+        <i class="fas fa-check-circle"></i>
+        <span style="color: white;"><%= success_hizmet  %></span>
+    </div>
+<% } %>

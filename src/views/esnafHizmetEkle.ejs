@@ -1,0 +1,102 @@
+<img src="/public/img/2.jpg" alt="" style="height: 700px;">
+
+<div class="container mt-5" >
+    
+    <%- include ('./partials/message') %>
+
+    <div class="row" style="margin-top: -65%; ">
+      <h2>Hizmet Ekle</h2>
+    <hr>
+      <div class="col-md-6">
+        <form id="hizmetEkleForm" method="post" action="/esnaf/hizmet-ekle/<%= userId %>" enctype="multipart/form-data">
+          <h1><%= esnaf.esnafAd %> <br></h1>
+          <br>
+          <div class="mb-3">
+            <label for="hizmetBasligi" class="form-label">Hizmet Başlığı</label>
+            <input type="text" class="form-control" id="hizmetBasligi" placeholder="Hizmet Başlığı" name="hizmetAdi">
+          </div>
+          <div class="mb-3">
+            <label for="hizmetAciklamasi" class="form-label">Hizmet Açıklaması</label>
+            <input type="text" class="form-control" id="hizmetAciklamasi" placeholder="Hizmet Açıklaması" name="hizmetAciklama">
+          </div>
+          <div class="mb-3">
+            <label for="hizmetFiyati" class="form-label">Hizmet Fiyatı</label>
+            <div class="input-group">
+              <input type="number" class="form-control" id="hizmetFiyati" placeholder="Hizmet Fiyatı" name="hizmetFiyat">
+              <span class="input-group-text">TL</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="hizmetResim" class="form-label">Hizmet Resmi</label>
+            <input type="file" class="form-control" id="hizmetResim" name="hizmetImage">
+          </div>
+          <input type="hidden" id="esnafId" name="esnafId" value="<%= esnaf._id %>">
+          <button type="submit" class="btn btn-primary">Hizmeti Ekle</button>
+        </form>
+      </div>
+      <div class="col-md-6">
+        <h2>Hizmet Listesi</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Başlık</th>
+              <th scope="col">Açıklama</th>
+              <th scope="col">Fiyat</th>
+              <th scope="col">Resim</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% hizmetler.forEach(function(hizmet, index) { %>
+              <tr>
+                <th scope="row"><%= index + 1 %></th>
+                <td><%= hizmet.hizmetAdi %></td>
+                <td><%= hizmet.hizmetAciklama %></td>
+                <td><%= hizmet.hizmetFiyat %> TL</td>
+                <td><img src="/uploads/<%= hizmet.hizmetImage %>" alt="" style="width: 80px; height: 80px;"></td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+        <nav aria-label="Sayfalama">
+      <ul class="pagination">
+        <% if (currentPage > 1) { %>
+          <li class="page-item">
+            <a class="page-link" href="?page=<%= currentPage - 1 %>" aria-label="Önceki">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+        <% } %>
+
+        <% for (let i = 1; i <= totalPages; i++) { %>
+          <li class="page-item <%= i === currentPage ? 'active' : '' %>">
+            <a class="page-link" href="?page=<%= i %>"><%= i %></a>
+          </li>
+        <% } %>
+
+        <% if (currentPage < totalPages) { %>
+          <li class="page-item">
+            <a class="page-link" href="?page=<%= currentPage + 1 %>" aria-label="Sonraki">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        <% } %>
+      </ul>
+    </nav>
+      </div>
+      
+    </div>
+  </div>
+  
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+  <script>
+    var hizmetFiyatiInput = document.querySelector("#hizmetFiyati");
+  
+    hizmetFiyatiInput.addEventListener("input", function () {
+      var value = parseFloat(hizmetFiyatiInput.value);
+      if (!isNaN(value)) {
+        hizmetFiyatiInput.value = value.toFixed(2);
+      }
+    });
+  </script>
+  

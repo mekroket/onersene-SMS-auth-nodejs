@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="icon" type="image/x-icon" href="/uploads/icon.png">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+  <link rel="stylesheet" href="/public/css/app.css">
+  <link rel="stylesheet" href="/public/css/intlTelInput.css">
+  <link rel="stylesheet" href="/public/css/user.css">
+  <link rel="stylesheet" href="/public/css/navbar.css">
+  <style>
+    /* Loading ekranı stilleri */
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .loading-spinner {
+      border: 16px solid #f3f3f3;
+      border-top: 16px solid #00d30b;
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+  <title>onersene-Tüm Esnaflar Avucunuzda</title>
+</head>
+
+<body>
+  <header class="site-navbar js-sticky-header site-navbar-target" role="banner">
+    <div class="container">
+      <div class="row align-items-center position-relative">
+        <div class="site-logo">
+          <a href="/"><img src="/public/img/logo2.png" alt="/" style="width: 15%;"></a>
+        </div>
+        <div class="col-12">
+          <nav class="site-navigation text-right ml-auto" role="navigation">
+            <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+              <li><a href="/" class="nav-link">Anasayfa</a></li>
+              <li><a href="/onersene/kategori" class="nav-link">Kategoriler</a></li>
+              <% if (isLoggedIn) { %>
+                <li><a class="nav-link" href="/users/settings/<%= userId %>">
+                    <%= userName %>
+                  </a></li>
+                  <li><a href="/onersene/sepet" class="nav-link"><i class="shopping cart icon"
+                    style="color: green;"></i> Sepetim <span class="badge badge-success" id="cart-item-count">
+                    <%= sepetCount %>
+                  </span></a></li>
+                  <li><a href="/users/logout" class="nav-link" style="color: red !important;">Çıkış Yap</a></li>
+
+                <% if (isAdmin) { %>
+                  <li><a href="/admin" class="nav-link" style="color: green !important;">Admin Paneli</a></li>
+                  <li><a href="/users/logout" class="nav-link" style="color: red !important;">Çıkış Yap</a></li>
+                  <% } else if (isShop) { %>
+                    <li><a href="/esnaf/<%= userId %>" class="nav-link" style="color: rgb(0, 26, 255) !important;">Esnaf
+                        Kayıt Paneli</a></li>
+                    <li><a href="/esnaf/hizmet-ekle/<%= userId %>" class="nav-link"
+                        style="color: rgb(0, 255, 64) !important;">Hizmet Ekle</a></li>                    
+                        <% } %>
+                      <% } else { %>
+                        <li><a href="/users/login" class="nav-link" style="color: rgb(0, 0, 0) !important;">Giriş
+                            Yap</a></li>
+                        <li><a href="/users/signup" class="nav-link" style="color: rgb(0, 0, 0) !important;">Kayıt
+                            Ol</a></li>
+                        <li><a href="/users/esnaf-ol" class="nav-link" style="color: rgb(0, 255, 55) !important;">Esnaf
+                            Ol</a></li>
+                        <% } %>
+            </ul>
+          </nav>
+        </div>
+        <div class="toggle-button d-inline-block d-lg-none">
+          <a href="#" class="site-menu-toggle py-5 js-menu-toggle text-black">
+            <span class="icon-menu h3"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Loading ekranı -->
+  <div class="loading-overlay" id="loading-overlay">
+    <div class="loading-spinner">
+    </div>
+  </div>
+
+  <header class="site-navbar js-sticky-header site-navbar-target" role="banner">
+    <!-- Header içeriği -->
+  </header>
+  <%- body %>
+
+
+  <br><br><br><br><br>
+  <!-- Footer -->
+<footer class="text-center text-lg-start bg-light text-muted">
+  <!-- Section: Social media -->
+  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+    <!-- Left -->
+    <div class="me-5 d-none d-lg-block">
+      <span>Sosyal Medyadan Bizi Takip Et :</span>
+    </div>
+    <!-- Left -->
+
+    <!-- Right -->
+    <div>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </section>
+  <!-- Section: Social media -->
+
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            <img src="/public/img/logo2.png" alt="" style="width: 80%;">
+          </h6>
+          <p>
+            Tüm Esnaflar Avucunuzda.
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Kategoriler
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">Angular</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">React</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Vue</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Laravel</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Hizmetler
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">Pricing</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Settings</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Orders</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Help</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">İletişim</h6>
+          <p><i class="fas fa-home me-3"></i> Karaman/Merkez, Türkiye</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            info.onersene@gmail.com
+          </p>
+          <p><i class="fas fa-phone me-3"></i> + 90 553 567 88</p>
+          <p><i class="fas fa-print me-3"></i> + 90 552 567 89</p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2023 Copyright:
+    <a class="text-reset fw-bold" href="http://onersene.com/">onersene.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+    <script>
+      // Sayfa yüklendiğinde loading ekranını gizle
+      window.addEventListener('load', function () {
+        var loadingOverlay = document.getElementById('loading-overlay');
+        setTimeout(function () {
+          loadingOverlay.style.display = 'none';
+        }, 150); // 1000 milisaniye = 1 saniye
+      });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <script>
+      // Sayfa yüklendiğinde veya sepete ekleme işlemi gerçekleştiğinde sepet sayısını güncelleyin
+      const sepetCountElement = document.getElementById('cart-item-count');
+      sepetCountElement.textContent = '<%= sepetCount %>';
+    </script>
+</body>
+
+</html>

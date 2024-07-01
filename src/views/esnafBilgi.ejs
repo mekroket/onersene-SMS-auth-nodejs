@@ -1,0 +1,111 @@
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                <img class="rounded-square mt-5" width="150px" src="/uploads/<%=resim%>">
+                <span class="font-weight-bold">Banner Resmi</span>
+                <p>Kullanıcılar İlk Bu resmi Görücektir</p>
+
+                <img class="rounded-square mt-5" width="150px" src="/uploads/<%=sliderResim%>">
+                <span class="font-weight-bold">Slider Resmi</span>
+                <p>Kullanıcılar Hizmet Panelinde Bu Resmi Görücektir</p>
+
+
+                <span></span>
+            </div>
+        </div>
+        <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Esnaf Bilgi Kayıt Sistemi</h4>
+                </div>
+                <form action="/esnaf/<%= userId %>" method="POST" enctype="multipart/form-data">
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <label class="labels">Kategori</label>
+
+                            <select class="form-control" id="kategoriSelect" name="kategori" >
+                                <option value="<%= kategori %>">-- Kategori Seçin --</option>
+                                <% kategoriler.forEach(kategori => { %>
+                                  <option value="<%= kategori._id %>"><%= kategori.kategori %></option>
+                                <% }) %>
+                              </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="labels">Dükkan İsmi</label>
+                            <input type="text" class="form-control" placeholder="Dükkan İsmi" name="esnafAd" value="<%= esnafAd %>" >
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label class="labels">İl</label>
+                            <input type="text" class="form-control" placeholder="İl" name="il" value="<%= il %>">
+                        </div>
+                        <div class="col-md-12">
+                            <label class="labels">İlçe</label>
+                            <input type="text" class="form-control" placeholder="İlçe" name="ilce" value="<%= ilce %>">
+                        </div>
+                        <div class="col-md-12">
+                            <label class="labels">Mahalle</label>
+                            <input type="text" class="form-control" placeholder="Mahalle" name="mahalle" value="<%= mahalle %>">
+                        </div>
+                        <div class="col-md-12">
+                            <label class="labels">Sokak</label>
+                            <input type="text" class="form-control" placeholder="Sokak" name="sokak" value="<%= sokak %>">
+                        </div>
+                        <div class="col-md-12">
+                            <label class="labels">No</label>
+                            <input type="text" class="form-control" placeholder="No" name="no" value="<%= no %>" >
+                        </div>
+                        <div class="col-md-12">
+                            <label class="labels">Vergi No</label>
+                            <input type="text" class="form-control" placeholder="Vergi No" name="vergiNo" value="<%= vergiNo %>">
+                        </div>
+                        <div class="mb-3">
+                            <label for="resim" class="form-label">Banner Resmi</label>
+                            <input type="file" class="form-control" name="resim" id="resim">
+                        </div>
+                        <div class="mb-3">
+                            <label for="sliderResim" class="form-label">Slider Resmi</label>
+                            <input type="file" class="form-control" name="sliderResim" id="sliderResim">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="sozlesme" value="true" name="sozlesme" >
+                                <label class="form-check-label" for="sozlesmeOnayi" >Sözleşme Onayı - onersene.com'un
+                                    sunduğu tüm sözleşme <span><a href=""> tahhahütüne</a></span> uyduğumu
+                                    onaylıyorum.</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-5 text-center">
+                        <div class="mt-5 text-center">
+                            <% if (!isSavedToDatabase) { %>
+                                <button class="btn btn-primary profile-button" id="kaydetButton" type="submit">Bilgileri Kaydet</button>
+                                <% } else { %>
+                                <button class="btn btn-primary profile-button" type="submit" disabled>Kaydedildi</button>
+                            <% } %>
+                            
+                        </div>
+                        
+                    </div>
+                </form>
+
+            </div>
+
+
+        </div>
+
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+

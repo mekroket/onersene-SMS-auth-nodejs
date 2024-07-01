@@ -1,0 +1,172 @@
+<style>
+    .notification {
+        position: fixed;
+        top: 20%;
+        right: -300px;
+        /* Başlangıçta sağda gizli */
+        transform: translateY(-50%);
+        width: 300px;
+        padding: 10px;
+        background-color: #f8f8f8;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        transition: right 0.5s ease;
+        z-index: 9999;
+    }
+
+    .notification.open {
+        right: 10px;
+        /* Açık durumda sağa kaydırılıyor */
+    }
+
+    .notification-content {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .notification-icon {
+        font-size: 24px;
+        color: green;
+    }
+
+    .notification-message {
+        font-size: 14px;
+        color: black;
+    }
+
+    .notification-close {
+        font-size: 16px;
+        color: gray;
+        cursor: pointer;
+    }
+    .bg-image {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.5;
+    }
+</style>
+
+
+<div class="bg-image">
+    <img src="/public/img/2.jpg" alt="" style="height: 100%; width: 100%;">
+</div>
+
+
+
+
+
+
+<link rel="stylesheet" href="/public/css/home.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<div style="width: 20%; margin-left: 75%;">
+</div>
+
+
+<div class="container mt-5" style="margin-top: -100%;">
+    <div style="text-align: center;">
+
+        <h1 class="mt-5">Hizmetler</h1>
+        <h2>Kategori: <%= kategori.kategori %>
+        </h2>
+        <h2>Esnaf: <%= esnaf.esnafAd %>
+        </h2>
+        <h3><i class="fas fa-envelope" style="color: green;"></i><a href="" style="color: green;"> Hızlı Ulaş</a></h3>
+        <h3>Hizmetler</h3>
+
+        <% hizmetler.forEach(function(hizmet) { %>
+            <div class="container mt-5">
+                <div class="row" style="float: left;">
+                    <div class="col-md-3">
+                        <div class="card card-sl" style="text-align: left; ">
+                            <div class="card-image">
+                                <img src="/uploads/<%=hizmet.hizmetImage%>" class="img-fluid" />
+                            </div>
+
+
+                            <div class="card-heading">
+                                <%= hizmet.hizmetAdi %>
+                            </div><br>
+
+                            <div class="card-text">
+                                <%= hizmet.hizmetAciklama %>
+                            </div><br>
+
+                            <div class="card-text">
+                                Fiyat : <%= hizmet.hizmetFiyat %> ₺
+                            </div><br>
+
+                            <form action="/onersene/kategori/<%= kategori._id %>/esnaflar/<%= esnaf._id %>/hizmetler"
+                                method="POST">
+                                <input type="hidden" name="hizmetId" value="<%= hizmet._id %>">
+                                <button type="submit" class="btn btn-success card-button"
+                                    style="margin-left: 35%;">Sepete
+                                    Ekle</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+    </div>
+
+</div>
+
+
+<ul>
+
+
+</ul>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<script>
+    // Bildirimi gösteren fonksiyon
+    function showNotification(message) {
+        var notificationElement = document.createElement('div');
+        notificationElement.classList.add('notification');
+        notificationElement.innerHTML = `
+            <div class="notification-content" >
+                <div class="notification-icon" >
+                    <i class="fas fa-bell"></i>
+                </div>
+                <div class="notification-message">${message}</div>
+                <div class="notification-close" onclick="closeNotification(this)">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(notificationElement);
+
+        setTimeout(function () {
+            notificationElement.classList.add('open');
+        }, 100);
+
+        setTimeout(function () {
+            closeNotification(notificationElement.querySelector('.notification-close'));
+        }, 4000);
+    }
+
+    // Bildirimi kapatma fonksiyonu
+    function closeNotification(closeButton) {
+        var notificationElement = closeButton.closest('.notification');
+        notificationElement.classList.remove('open');
+        setTimeout(function () {
+            notificationElement.remove();
+        }, 500);
+    }
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    // Sayfa yüklendiğinde veya sepete ekleme işlemi gerçekleştiğinde sepet sayısını güncelleyin
+    const sepetCountElement = document.getElementById('cart-item-count');
+    sepetCountElement.textContent = '<%= sepetCount %>';
+
+    // Flash mesajını göster
+    <% if (success_msg_flash) { %>
+        showNotification('<%= success_msg_flash %>');
+    <% } %>
+</script>

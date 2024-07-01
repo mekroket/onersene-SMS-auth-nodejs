@@ -1,0 +1,72 @@
+<img src="/public/img/2.jpg" alt="" style="height: 700px;">
+<% let toplamTutar=0; sepet.forEach(function(item) { toplamTutar +=item.hizmetId.hizmetFiyat; }); %>
+    <section class="py-5 bg-light" style="margin-top: -35%; ">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <% sepet.forEach(function(item) { %>
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <%= item.hizmetId.hizmetAdi %>
+                                </h5>
+                                <hr>
+                                <div class="row align-items-center">
+                                    <div class="col-md-3">
+                                        <img style="width: 100px; height: 100px;"
+                                            src="/uploads/<%= item.hizmetId.hizmetImage %>" class="img-fluid"
+                                            alt="Product Image" st>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="d-flex flex-column align-items-start">
+                                            <h6 class="card-subtitle mb-2"></h6><br><br><br><br><br><br><br><br>
+                                            <p class="card-text mb-0" style="margin-left: 150%;">
+                                                <%= item.hizmetId.hizmetFiyat %>TL
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <button class="btn btn-outline-secondary" type="button">-</button>
+                                            <input type="text" class="form-control text-center"
+                                                value="<%= item.miktar %>">
+                                            <button class="btn btn-outline-secondary" type="button">+</button>
+                                        </div>
+                                    </div>
+
+                                    <p class="card-title" style="margin-top: 2%;">
+                                        <%= item.hizmetId.hizmetAciklama %>
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <% }); %>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Hesap Özeti</h5>
+                            <hr>
+                            <p class="card-text">Hizmetlerin Toplam Fiyatı: <span style="color: green;"><%= toplamTutar.toFixed(2) %> TL</span></p>
+                            +
+                            <p class="card-text">KDV Oranı (%20) : <span style="color: green;"><%= (toplamTutar * 0.18).toFixed(2) %> TL</span></p>
+                            +
+                            <p class="card-text">Komisyon: <span style="color: green;"><%= (toplamTutar * 0.04).toFixed(2) %> TL</span></p>
+                            =
+                            <h6 class="card-subtitle">Toplam Fiyat: <span style="color: green;"><%= (toplamTutar * 1.22).toFixed(2) %> TL</span></h6>
+
+
+
+                        </div>
+                        
+                    </div>
+                    <button class="btn btn-success btn-block">Ödemeye Geç</button>
+
+
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>

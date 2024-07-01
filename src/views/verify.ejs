@@ -1,0 +1,18 @@
+<img src="/public/img/banner.jpg" alt="">
+
+<%- include ('./partials/message') %>
+  
+  <div class="ui very padded text container segment" style="margin-top: -35%; margin-bottom: 10%;">
+    <h1>Doğrulama Sayfası</h1>
+    <p>Lütfen gelen kodu giriniz</p>
+    <form class="ui form" action="/users/verify" method="POST">
+      <div class="mb-3">
+        <label for="verifyCode" class="form-label">Verification code</label>
+        <input type="text" class="form-control" id="verifyCode" name="verifyCode" placeholder="Code">
+      </div>
+      <button type="submit" class="btn btn-primary">Verify</button><br>
+      <a href="/users/resend" class="btn btn-secondary">Resend Code</a>
+    </form>
+  </div>
+  <br>
+ 

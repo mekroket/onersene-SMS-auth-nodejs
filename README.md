@@ -1,5 +1,3 @@
-# Phoneverfy
-
 ## Proje Hakkında
 
 Bu proje, kullanıcıların telefon numaraları üzerinden üye olmalarını ve giriş yapmalarını sağlayan bir sistemdir. Kullanıcılar, telefonlarına gönderilen doğrulama kodu ile hesaplarını doğrulayabilir ve profillerini yönetebilirler. Proje aynı zamanda sepet ekleme, admin paneli yönetimi, grafik ekleme, profil düzenleme, yetki yönetimi, kategori yönetimi gibi sistemler içerir.
@@ -10,7 +8,9 @@ Bu proje, kullanıcıların telefon numaraları üzerinden üye olmalarını ve 
 - **MongoDB** veritabanı kullanılmıştır.
 
 ### Bağımlılıklar
-  npm install @hapi/joi@^17.1.1
+
+```bash
+npm install @hapi/joi@^17.1.1
 npm install bcrypt@^5.1.0
 npm install bcryptjs@^2.4.3
 npm install connect-flash@^0.1.1
@@ -28,6 +28,7 @@ npm install passport@^0.6.0
 npm install passport-local@^1.0.0
 npm install passport-phone@^1.2.3
 npm install twilio@^3.84.1
+
 
 Kurulum Adımları
 Projeyi Klonlayın ve Bağımlılıkları Yükleyin

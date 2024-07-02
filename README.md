@@ -73,7 +73,7 @@ Uygulamayı başlatmak için aşağıdaki komutu çalıştırın:
 npm start
 node app.js
 ```
-Uygulama varsayılan olarak http://localhost:3000 adresinde çalışacaktır.
+Uygulama varsayılan olarak http://localhost:3000 adresinde çalışacaktır. İyi Çalışmalar
 
 
 
